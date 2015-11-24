@@ -37,6 +37,14 @@ on boot
     //chown system system /sys/class/magnetic/magnetic/oflag
     //chown system system /sys/class/magnetic/magnetic/grvflag
     //chown system system /sys/class/magnetic/magnetic/delay
+    
+    #add for stk3x1x
+    chown system system /sys/class/input/input0/driver/enable
+    chown system system /sys/class/input/input1/driver/enable
+    chown system system /sys/class/input/input0/driver/delay
+    chown system system /sys/class/input/input1/driver/cali
+    #/sys/class/input/event0/device/driver/enable
+    #chmod 666 /sys/class/input/inputY/driver/cali
 
 # [CCI] MEMSIC sensor daemon
 service memsicd /system/bin/memsicd
