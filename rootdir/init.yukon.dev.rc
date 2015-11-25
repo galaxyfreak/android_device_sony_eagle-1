@@ -1,5 +1,5 @@
 on boot
-# S [CCI] Geomagnetic YAS533 iio
+# Geomagnetic YAS533 iio
     chown system system /dev/iio:device0
     chown system system /sys/bus/iio/devices/iio:device0/hard_offset
     chown system system /sys/bus/iio/devices/iio:device0/sampling_frequency
@@ -19,10 +19,13 @@ on boot
     write /sys/bus/iio/devices/iio:device1/position 0
     chmod 666 /data/system/yas.cfg
     write /data/system/yas.cfg "200,300,500,30,20,15,1,1,1,10872,166,113,376,8812,-118,340,-718,10451"
-# E [CCI] Geomagnetic YAS533 iio
-    chown root radio /proc/cmdline
 
-# [CCI] MEMSIC sensor
+    chown system system /sys/class/input/input0/driver/enable
+    chown system system /sys/class/input/input1/driver/enable
+    chown system system /sys/class/input/input0/driver/delay
+    chown system system /sys/class/input/input1/driver/cali
+
+# MEMSIC sensor
     mkdir /data/misc/sensors 0777 system system
     chmod 666 /dev/mmc3416x
     chmod 666 /dev/ecompass_ctrl
@@ -32,26 +35,13 @@ on boot
     chmod 666 /sys/class/magnetic/magnetic/oflag
     chmod 666 /sys/class/magnetic/magnetic/grvflag
     chmod 666 /sys/class/magnetic/magnetic/delay
-    //chown system system /sys/class/magnetic/magnetic/aflag
-    //chown system system /sys/class/magnetic/magnetic/mflag
-    //chown system system /sys/class/magnetic/magnetic/oflag
-    //chown system system /sys/class/magnetic/magnetic/grvflag
-    //chown system system /sys/class/magnetic/magnetic/delay
     
-    #add for stk3x1x
-    chown system system /sys/class/input/input0/driver/enable
-    chown system system /sys/class/input/input1/driver/enable
-    chown system system /sys/class/input/input0/driver/delay
-    chown system system /sys/class/input/input1/driver/cali
-    #/sys/class/input/event0/device/driver/enable
-    #chmod 666 /sys/class/input/inputY/driver/cali
-
-# [CCI] MEMSIC sensor daemon
+# MEMSIC sensor daemon
 service memsicd /system/bin/memsicd
     class main
     oneshot
 	
-#MAC setup
+# MAC setup
 service btnvtool /system/vendor/bin/btnvtool -I
     user root
     group root
