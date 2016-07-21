@@ -35,6 +35,9 @@ PRODUCT_COPY_FILES += \
     device/sony/eagle/rootdir/fstab.yukon:root/fstab.yukon \
     device/sony/eagle/rootdir/init.yukon.dev.rc:root/init.yukon.dev.rc
 
+PRODUCT_COPY_FILES += \
+    device/sony/eagle/releasetools/sensors.sh:install/bin/sensors.sh
+
 # Product attributes
 PRODUCT_NAME := aosp_d2303
 PRODUCT_DEVICE := eagle
