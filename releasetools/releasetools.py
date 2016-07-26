@@ -17,5 +17,5 @@
 
 def FullOTA_InstallEnd(info):
   info.script.Mount("/system")
-  info.script.AppendExtra('run_program("/tmp/install/bin/sensors.sh")')
+  info.script.AppendExtra('run_program("/tmp/install/bin/sensors.sh");')
   info.script.Unmount("/system")
